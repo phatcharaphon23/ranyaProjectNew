@@ -24,7 +24,7 @@ if (isset($_GET)) {
 		$password = $_GET['password'];
 		
 							
-		$sql = INSERT INTO `user`(`id`, `name`, `email`, `phone`, `password`) VALUES (Null,'$name','$email','$phone','$password','$','$','$','$','$')";
+		$sql = "INSERT INTO `user`(`id`, `name`, `email`, `phone`, `password`) VALUES (Null,'$name','$email','$phone','$password')";
 
 		$result = mysqli_query($link, $sql);
 

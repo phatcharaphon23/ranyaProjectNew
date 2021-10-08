@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:fluttenew/utility/my_constant.dart';
 import 'package:fluttenew/utility/my_dialog.dart';
 import 'package:fluttenew/widgets/show_image.dart';
@@ -13,8 +15,11 @@ class CreateAccount extends StatefulWidget {
 
 class _CreateAccountState extends State<CreateAccount> {
   final formkey = GlobalKey<FormState>();
-
-  get typeUser => null;
+  TextEditingController nameContriller = TextEditingController();
+  TextEditingController emailContriller = TextEditingController();
+  TextEditingController phoneContriller = TextEditingController();
+  TextEditingController passwordContriller = TextEditingController();
+  // TextEditingController confirmpasswordContriller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +43,7 @@ class _CreateAccountState extends State<CreateAccount> {
                 buildEmail(size),
                 buildPhone(size),
                 buildPassword(size),
-                buildConfirmPassword(size),
+                // buildConfirmPassword(size),
                 buildCreateAccount(size),
                 buildLogin(),
               ],
@@ -57,6 +62,7 @@ class _CreateAccountState extends State<CreateAccount> {
           margin: EdgeInsets.only(top: 15),
           width: size * 0.8,
           child: TextFormField(
+            controller: nameContriller,
             validator: (value) {
               if (value!.isEmpty) {
                 return "Please complete your name";
@@ -92,6 +98,7 @@ class _CreateAccountState extends State<CreateAccount> {
           margin: EdgeInsets.only(top: 20),
           width: size * 0.8,
           child: TextFormField(
+            controller: emailContriller,
             validator: (value) {
               if (value!.isEmpty) {
                 return "Please enter your email";
@@ -127,6 +134,7 @@ class _CreateAccountState extends State<CreateAccount> {
           margin: EdgeInsets.only(top: 20),
           width: size * 0.8,
           child: TextFormField(
+            controller: phoneContriller,
             keyboardType: TextInputType.phone,
             validator: (value) {
               if (value!.isEmpty) {
@@ -163,6 +171,7 @@ class _CreateAccountState extends State<CreateAccount> {
           margin: EdgeInsets.only(top: 20),
           width: size * 0.8,
           child: TextFormField(
+            controller: passwordContriller,
             validator: (value) {
               if (value!.isEmpty) {
                 return "Please enter your password";
@@ -190,40 +199,41 @@ class _CreateAccountState extends State<CreateAccount> {
     );
   }
 
-  Row buildConfirmPassword(double size) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Container(
-          margin: EdgeInsets.only(top: 20),
-          width: size * 0.8,
-          child: TextFormField(
-            validator: (value) {
-              if (value!.isEmpty) {
-                return "Please enter your password";
-              } else {}
-            },
-            decoration: InputDecoration(
-              labelStyle: Myconstant().h3Style(),
-              labelText: 'Confirm Password :',
-              prefixIcon: Icon(
-                Icons.lock_open_outlined,
-                color: Myconstant.dark,
-              ),
-              enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(30),
-                borderSide: BorderSide(color: Myconstant.light),
-              ),
-              focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(30),
-                borderSide: BorderSide(color: Myconstant.light),
-              ),
-            ),
-          ),
-        ),
-      ],
-    );
-  }
+  // Row buildConfirmPassword(double size) {
+  //   return Row(
+  //     mainAxisAlignment: MainAxisAlignment.center,
+  //     children: [
+  //       Container(
+  //         margin: EdgeInsets.only(top: 20),
+  //         width: size * 0.8,
+  //         child: TextFormField(
+  //           controller: confirmpasswordContriller,
+  //           validator: (value) {
+  //             if (value!.isEmpty) {
+  //               return "Please enter your password";
+  //             } else {}
+  //           },
+  //           decoration: InputDecoration(
+  //             labelStyle: Myconstant().h3Style(),
+  //             labelText: 'Confirm Password :',
+  //             prefixIcon: Icon(
+  //               Icons.lock_open_outlined,
+  //               color: Myconstant.dark,
+  //             ),
+  //             enabledBorder: OutlineInputBorder(
+  //               borderRadius: BorderRadius.circular(30),
+  //               borderSide: BorderSide(color: Myconstant.light),
+  //             ),
+  //             focusedBorder: OutlineInputBorder(
+  //               borderRadius: BorderRadius.circular(30),
+  //               borderSide: BorderSide(color: Myconstant.light),
+  //             ),
+  //           ),
+  //         ),
+  //       ),
+  //     ],
+  //   );
+  // }
 
   Row buildCreateAccount(double size) {
     return Row(
@@ -243,16 +253,23 @@ class _CreateAccountState extends State<CreateAccount> {
       style: Myconstant().myButtonStyle(),
       onPressed: () {
         if (formkey.currentState!.validate()) {
-          // if (typeUser == null) {
-          //   print('Non Choose Type User');
-          //   MyDialog().normalDialog(context, 'ยังไม่ได้เลือก ', message)
-          // } else {
-          //   print('Process Insert to Database');
-          // }
+        } else {
+          print('Process Tnsert to Database');
+          uploadInsertData();
         }
       },
       child: Text('Create Account'),
     );
+  }
+
+  Future<Null> uploadInsertData() async {
+    String name = nameContriller.text;
+    String email = emailContriller.text;
+    String phone = phoneContriller.text;
+    String password = passwordContriller.text;
+    // String confirmpassword = confirmpasswordContriller.text;
+    print(
+        '## name = $name,email = $email, phone = $phone, password = $password');
   }
 
   Row buildLogin() {
