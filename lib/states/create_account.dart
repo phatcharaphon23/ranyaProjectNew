@@ -267,7 +267,7 @@ class _CreateAccountState extends State<CreateAccount> {
     String email = emailContriller.text;
     String phone = phoneContriller.text;
     String password = passwordContriller.text;
-    // String confirmpassword = confirmpasswordContriller.text;
+
     print(
         '## name = $name,email = $email, phone = $phone, password = $password');
   }
