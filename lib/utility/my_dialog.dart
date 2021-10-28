@@ -4,9 +4,10 @@ import 'package:fluttenew/widgets/show_image.dart';
 import 'package:fluttenew/widgets/show_title.dart';
 
 class MyDialog {
-  Future<Null> alertLocationService(
-      BuildContext context, String title, String message) async {}
+  // Future<Null> alertLocationService(
+  //     BuildContext context, String title, String message) async {}
 
+  // ignore: prefer_void_to_null
   Future<Null> normalDialog(
       BuildContext context, String title, String message) async {
     showDialog(
