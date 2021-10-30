@@ -18,13 +18,13 @@ class BottomNavBar extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
           BottomNaItem(
-            title: "Scan",
-            svgScr: "assets/icons/scan.png",
+            title: "Home",
+            svgScr: "assets/icons/home2.png",
             onpress: () {},
           ),
           BottomNaItem(
-            svgScr: "assets/icons/home2.png",
-            title: "Home",
+            svgScr: "assets/icons/scan.png",
+            title: "Scan",
             onpress: () {},
             isActive: true,
           ),

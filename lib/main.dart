@@ -1,5 +1,4 @@
 import 'package:fluttenew/states/Home/body.dart';
-import 'package:fluttenew/states/Home/menu_bar.dart';
 import 'package:fluttenew/states/Packaging/packaging_screen.dart';
 import 'package:fluttenew/states/create_account.dart';
 import 'package:fluttenew/states/home.dart';
@@ -13,17 +12,16 @@ final Map<String, WidgetBuilder> map = {
   '/home': (BuildContext context) => Home(),
   '/authen': (BuildContext context) => Authen(),
   '/createAccount': (BuildContext context) => CreateAccount(),
-  '/menu_bar': (BuildContext context) => MenuBAr(),
   '/packagingScreen': (BuildContext context) => PackagingScreen(),
 };
 
 String? initlalRoute;
 
 void main() {
-  initlalRoute = Myconstant.routeBody;
+  initlalRoute = Myconstant.routePackagingScreen;
   // initlalRoute = Myconstant.routeBody;
   // initlalRoute = Myconstant.routeHome;
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {

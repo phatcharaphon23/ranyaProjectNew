@@ -5,12 +5,12 @@ import 'package:fluttenew/states/Home/body.dart';
 class CategoryCard extends StatelessWidget {
   final String svgSrc;
   final String title;
-  final Function press;
+  final Function onpress;
   const CategoryCard({
     Key? key,
     required this.svgSrc,
     required this.title,
-    required this.press,
+    required this.onpress,
   }) : super(key: key);
 
   @override
@@ -33,7 +33,9 @@ class CategoryCard extends StatelessWidget {
         child: Material(
           color: Colors.transparent,
           child: InkWell(
-            onTap: () {}, //อันนี้ต้องมาแก้น่ะ
+            onTap: () {
+              Navigator.pop(context);
+            }, //อันนี้ต้องมาแก้น่ะ
             child: Padding(
               padding: const EdgeInsets.all(20.0),
               child: Column(
