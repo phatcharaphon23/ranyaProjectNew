@@ -18,7 +18,7 @@ final Map<String, WidgetBuilder> map = {
 String? initlalRoute;
 
 void main() {
-  initlalRoute = Myconstant.routePackagingScreen;
+  initlalRoute = Myconstant.routeBody;
   // initlalRoute = Myconstant.routeBody;
   // initlalRoute = Myconstant.routeHome;
   runApp(const MyApp());
