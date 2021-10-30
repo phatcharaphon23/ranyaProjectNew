@@ -1,6 +1,7 @@
 import 'package:fluttenew/states/Home/bottom_nav_bar.dart';
 import 'package:fluttenew/states/Home/title_with_more.dart';
 import 'package:fluttenew/states/Packaging/packaging_screen.dart';
+import 'package:fluttenew/states/Packaging/packaging_screen.dart';
 import 'package:fluttenew/utility/my_constant.dart';
 import 'package:fluttenew/widgets/category_card.dart';
 import 'package:fluttenew/widgets/show_image.dart';
@@ -16,13 +17,11 @@ class Body extends StatelessWidget {
   Widget build(BuildContext context) {
     double size = MediaQuery.of(context).size.width;
     return Scaffold(
-      bottomNavigationBar: BottomNavBar(),
-      
+      bottomNavigationBar: const BottomNavBar(),
       body: Stack(
-        
         children: <Widget>[
           Container(
-            height: size * 0.6,
+            height: size * 0.8,
             decoration: BoxDecoration(
               color: Myconstant.primary,
             ),
@@ -35,8 +34,12 @@ class Body extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  Align(
-                    alignment: Alignment.topRight,
+                  Container(
+                    margin: const EdgeInsets.symmetric(vertical: 20),
+                    // ignore: prefer_const_constructors
+                    child: Align(
+                      alignment: Alignment.topRight,
+                    ),
                   ),
                   //แต่งด้วยน่ะอันนี้
                   Text(
@@ -73,22 +76,31 @@ class Body extends StatelessWidget {
                         CategoryCard(
                           title: "Packaging",
                           svgSrc: "assets/icons/export.png",
-                          press: () {},
+                          onpress: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const PackagingScreen(),
+                              ),
+                            );
+                          },
                         ),
                         CategoryCard(
                           title: "Information",
                           svgSrc: "assets/icons/supplements.png",
-                          press: () {},
+                          onpress: () {
+                            Navigator.pushNamed(context, '/authen');
+                          },
                         ),
                         CategoryCard(
                           title: "History",
                           svgSrc: "assets/icons/timetable.png",
-                          press: () {},
+                          onpress: () {},
                         ),
                         CategoryCard(
                           title: "แปะไว้ก่อน",
                           svgSrc: "assets/icons/test.png",
-                          press: () {},
+                          onpress: () {},
                         ),
                       ],
                     ),
