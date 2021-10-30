@@ -89,7 +89,7 @@ class Body extends StatelessWidget {
                           title: "Information",
                           svgSrc: "assets/icons/supplements.png",
                           onpress: () {
-                            Navigator.pushNamed(context, '/authen');
+                            // Navigator.pushNamed(context, '/authen');
                           },
                         ),
                         CategoryCard(
